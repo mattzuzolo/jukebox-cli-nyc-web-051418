@@ -49,22 +49,71 @@ def play (songs)
   puts "Please enter a song name or number:"
   user_selection = gets.chomp
   
-  # if songs.include?(user_selection)
-  #   puts "playing #{user_selection}"
+  if songs.include?(user_selection)
+    puts "playing #{user_selection}"
     
-  if songs[3].any?
-    puts "now playing number"
-    #puts "playing #{songs[user_selection - 1]}"
+  elsif ( (user_selection.to_i) - 1 > 0 ) && ( (user_selection.to_i) - 1 < songs.length )
+    puts "Playing #{songs[(user_selection.to_i) - 1]}"
   
-  # else
-  #   puts "Invalid input, please try again"
-  #   play(songs)
-  
+  else
+    puts "Invalid input, please try again"
+    #play(songs)
   end
-    
-  
-  
+
 end
+
+
+
+def exit_jukebox
+
+  puts "Goodbye"
+  break
+
+end
+
+
+
+def run
+  
+  help
+  puts "Please enter a command:"
+  
+  until user_selection == "exit"
+      user_selection = gets.chomp.downcase
+      
+      if user_selection == "help"
+        help
+        
+      elsif user_selection == "list"
+        list(songs)
+      
+      elsif user_selection == "play"
+        play(songs)
+  
+      elsif user_selection == "exit"
+        exit_jukebox
+        
+      else
+        puts "Please enter a command:"
+      end #end if
+  
+  end #end loop
+end #end #run
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
 
 
 
