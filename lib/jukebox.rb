@@ -38,11 +38,16 @@ def play (songs)
   puts "Please enter a song name or number:"
   user_selection = gets.chomp
   
+  #binding.pry
+  
   if songs.include?(user_selection)
     puts "playing #{user_selection}"
     
-  elsif ( (user_selection.to_i) - 1 > 0 ) && ( (user_selection.to_i) - 1 < songs.length )
+    
+  elsif (1..9).to_a.include?(user_selection.to_i)
+    
     puts "Playing #{songs[(user_selection.to_i) - 1]}"
+    
   
   else
     puts "Invalid input, please try again"
@@ -56,7 +61,6 @@ end
 def exit_jukebox
 
   puts "Goodbye"
-  
 
 end
 
@@ -66,11 +70,10 @@ def run (songs)
   
   help
   puts "Please enter a command:"
-  user_selection = gets.chomp
+  user_selection = ""
   
-  until user_selection == "exit"
+  while user_selection
       user_selection = gets.chomp
-      
       if user_selection == "help"
         help
         
