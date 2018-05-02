@@ -1,3 +1,5 @@
+require 'pry'
+
 songs = [
   "Phoenix - 1901",
   "Tokyo Police Club - Wait Up",
@@ -9,19 +11,6 @@ songs = [
   "Harry Chapin - Cats in the Cradle",
   "Amos Lee - Keep It Loose, Keep It Tight"
 ]
-
-
-# def say_hello(name)
-  
-#   "Hi #{name}!"
-# end
-
-
-# puts "Enter your name:"
-# users_name = gets.chomp!
-
-# puts say_hello(users_name)
-
 
 
 def help
@@ -67,19 +56,20 @@ end
 def exit_jukebox
 
   puts "Goodbye"
-  break
+  
 
 end
 
 
 
-def run
+def run (songs)
   
   help
   puts "Please enter a command:"
+  user_selection = gets.chomp
   
   until user_selection == "exit"
-      user_selection = gets.chomp.downcase
+      user_selection = gets.chomp
       
       if user_selection == "help"
         help
@@ -92,6 +82,7 @@ def run
   
       elsif user_selection == "exit"
         exit_jukebox
+        break
         
       else
         puts "Please enter a command:"
